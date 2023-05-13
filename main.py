@@ -62,8 +62,7 @@ col1, col2 = st.columns([1,1])
 
 col1.markdown(" # NDIS Chatbot ")
 col1.markdown(" ##### Ask me anything about NDIS ")
-col2.markdown(" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ")
+col2.markdown(" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []

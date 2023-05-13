@@ -73,8 +73,6 @@ def llm_chain(query):
                                     chain_type="stuff", retriever=retriever, 
                                     chain_type_kwargs=chain_type_kwargs)
 
-    #query #1
-    query = "what is NDIS?"
     result = qa({"query": query})
     
     return result

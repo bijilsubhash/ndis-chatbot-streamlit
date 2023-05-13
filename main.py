@@ -85,10 +85,21 @@ if "past" not in st.session_state:
     st.session_state["past"] = []
 
 placeholder = st.empty() 
-def get_text():
-    input_text = st.text_input("You: ", value="", key="input")
-    return input_text
+# def get_text():
+#     input_text = st.text_input("You: ", value="", key="input")
+#     return input_text
 
+# container for chat history
+response_container = st.container()
+# container for text box
+container = st.container()
+
+with container:
+    def get_text():
+        with st.form(key='my_form', clear_on_submit=True):
+            input_text = st.text_area("You:", key='input', height=100)
+            submit_button = st.form_submit_button(label='Send')
+        return input_text
 
 user_input = get_text()
 
@@ -103,5 +114,6 @@ if user_input:
 if st.session_state["generated"]:
 
     for i in range(len(st.session_state["generated"]) - 1, -1, -1):
-        message(st.session_state["generated"][i], key=str(i))
         message(st.session_state["past"][i], is_user=True, key=str(i) + "_user")
+        message(st.session_state["generated"][i], key=str(i))
+

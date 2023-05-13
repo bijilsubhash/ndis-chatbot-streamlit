@@ -75,7 +75,7 @@ def llm_chain(query):
 
     result = qa({"query": query})
     
-    return result
+    return result["answer"]
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []

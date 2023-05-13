@@ -24,12 +24,12 @@ st.set_page_config(page_title="NDIS Chatbot",
                    page_icon=":pixel-art-neutral:",
                    layout="centered", 
                    initial_sidebar_state="auto")
-col1, col2 = st.columns([1,1])
+col1 = st.columns([1])
 
 
 col1.markdown(" # NDIS Chatbot ")
 col1.markdown(" ##### Ask me anything about NDIS ")
-col2.markdown(" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ")
+# col2.markdown(" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ")
 
 #configurations
 csv.field_size_limit(sys.maxsize)
@@ -84,14 +84,8 @@ if "generated" not in st.session_state:
 if "past" not in st.session_state:
     st.session_state["past"] = []
 
-placeholder = st.empty() 
-# def get_text():
-#     input_text = st.text_input("You: ", value="", key="input")
-#     return input_text
-
-# container for chat history
+placeholder = st.empty()
 response_container = st.container()
-# container for text box
 container = st.container()
 
 with container:

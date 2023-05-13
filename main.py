@@ -1,22 +1,17 @@
-"""Python file to serve as the frontend"""
 import streamlit as st
 from streamlit_chat import message
+import time
+from app import llm_chain
 
-from langchain.chains import ConversationChain
-from langchain.llms import OpenAI
+st.set_page_config(page_title="NDIS Chatbot", 
+                   page_icon=":pixel-art-neutral:",
+                   layout="centered", 
+                   initial_sidebar_state="auto")
+col1, col2 = st.columns([1,1])
 
-
-def load_chain():
-    """Logic for loading the chain you want to use should go here."""
-    llm = OpenAI(temperature=0)
-    chain = ConversationChain(llm=llm)
-    return chain
-
-chain = load_chain()
-
-# From here down is all the StreamLit UI.
-st.set_page_config(page_title="LangChain Demo", page_icon=":robot:")
-st.header("LangChain Demo")
+col1.markdown(" # NDIS Chatbot ")
+col1.markdown(" ##### Ask me anything about NDIS ")
+col2.markdown(" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
@@ -24,19 +19,21 @@ if "generated" not in st.session_state:
 if "past" not in st.session_state:
     st.session_state["past"] = []
 
-
+placeholder = st.empty() 
 def get_text():
-    input_text = st.text_input("You: ", "Hello, how are you?", key="input")
+    input_text = st.text_input("You: ", value="", key="input")
     return input_text
 
 
 user_input = get_text()
 
 if user_input:
-    output = chain.run(input=user_input)
+    output = llm_chain(user_input)
+    with st.spinner('Wait for it...'):
+        st.session_state.past.append(user_input)
+        st.session_state.generated.append(output["answer"])
+        time.sleep(2)
 
-    st.session_state.past.append(user_input)
-    st.session_state.generated.append(output)
 
 if st.session_state["generated"]:
 

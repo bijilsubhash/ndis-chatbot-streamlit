@@ -90,14 +90,14 @@ def get_text():
         submit_button = st.form_submit_button(label='Send')
     return input_text
 
-    user_input = get_text()
+user_input = get_text()
 
-    if user_input:
-        with st.spinner('Wait for it...'):
-            output = llm_chain(user_input)
-            st.session_state.past.append(user_input)
-            st.session_state.generated.append(output)
-            time.sleep(0.03)
+if user_input:
+    with st.spinner('Wait for it...'):
+        output = llm_chain(user_input)
+        st.session_state.past.append(user_input)
+        st.session_state.generated.append(output)
+        time.sleep(0.03)
 
 
 if st.session_state["generated"]:

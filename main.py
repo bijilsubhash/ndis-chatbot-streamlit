@@ -5,6 +5,7 @@ import time
 import os
 import sys
 import csv
+import ast
 
 from langchain.document_loaders import CSVLoader
 from langchain.llms import OpenAI
@@ -75,7 +76,7 @@ def llm_chain(query):
 
     result = qa({"query": query})
     
-    return result["answer"]
+    return ast.literal_eval(result["answer"])
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []

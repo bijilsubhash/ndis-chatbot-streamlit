@@ -19,14 +19,9 @@ import pinecone
 
 #configurations
 csv.field_size_limit(sys.maxsize)
-
-headers = {
-    "authorization": st.secrets["OPENAI_API_KEY"]
-    "authorization": st.secrets["PINECONE_API_KEY"]
-    "authorization": st.secrets["PINECONE_ENV"]
-    "content-type": "application/json"
-}
-
+st.write("OPENAI_API_KEY:", st.secrets["OPENAI_API_KEY"])
+st.write("PINECONE_API_KEY:", st.secrets["PINECONE_API_KEY"])
+st.write("PINECONE_ENV:", st.secrets["PINECONE_ENV"])
 
 def llm_chain(query):
 

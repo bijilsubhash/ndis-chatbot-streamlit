@@ -8,11 +8,11 @@ import csv
 
 from langchain.document_loaders import CSVLoader
 from langchain.llms import OpenAI
-from langchain.chains import  ConversationalRetrievalChain
+from langchain.chains import  RetrievalQA
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Pinecone
-from langchain.memory import ConversationBufferMemory
+from langchain.prompts import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 
 import pinecone

@@ -86,15 +86,15 @@ if "past" not in st.session_state:
 
 placeholder = st.empty() 
 def get_text():
-    input_text = st.text_input("You: ", value="", key="input")
+    input_text = st.text_input("You: ", value="", key="input", placeholder="Type your question here...")
     return input_text
 
 
 user_input = get_text()
 
 if user_input:
-    output = llm_chain(user_input)
     with st.spinner('Wait for it...'):
+        output = llm_chain(user_input)
         st.session_state.past.append(user_input)
         st.session_state.generated.append(output)
         time.sleep(0.03)

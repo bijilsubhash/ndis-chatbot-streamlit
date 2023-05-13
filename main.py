@@ -19,9 +19,14 @@ import pinecone
 
 #configurations
 csv.field_size_limit(sys.maxsize)
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
-PINECONE_ENV = os.getenv("PINECONE_ENV")
+
+headers = {
+    "authorization": st.secrets["OPENAI_API_KEY"]
+    "authorization": st.secrets["PINECONE_API_KEY"]
+    "authorization": st.secrets["PINECONE_ENV"]
+    "content-type": "application/json"
+}
+
 
 def llm_chain(query):
 
@@ -62,7 +67,8 @@ col1, col2 = st.columns([1,1])
 
 col1.markdown(" # NDIS Chatbot ")
 col1.markdown(" ##### Ask me anything about NDIS ")
-col2.markdown(" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ")
+col2.markdown(" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []

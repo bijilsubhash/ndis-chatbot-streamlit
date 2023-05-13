@@ -31,9 +31,9 @@ col2.markdown(" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
 
 #configurations
 csv.field_size_limit(sys.maxsize)
-st.write("OPENAI_API_KEY:", st.secrets["OPENAI_API_KEY"])
-st.write("PINECONE_API_KEY:", st.secrets["PINECONE_API_KEY"])
-st.write("PINECONE_ENV:", st.secrets["PINECONE_ENV"])
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+PINECONE_API_KEY = st.secrets["PINECONE_API_KEY"]
+PINECONE_ENV = st.secrets["PINECONE_ENV"]
 
 def llm_chain(query):
 

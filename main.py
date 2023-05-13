@@ -17,6 +17,18 @@ from langchain.chat_models import ChatOpenAI
 
 import pinecone
 
+
+st.set_page_config(page_title="NDIS Chatbot", 
+                   page_icon=":pixel-art-neutral:",
+                   layout="centered", 
+                   initial_sidebar_state="auto")
+col1, col2 = st.columns([1,1])
+
+
+col1.markdown(" # NDIS Chatbot ")
+col1.markdown(" ##### Ask me anything about NDIS ")
+col2.markdown(" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ")
+
 #configurations
 csv.field_size_limit(sys.maxsize)
 st.write("OPENAI_API_KEY:", st.secrets["OPENAI_API_KEY"])
@@ -53,16 +65,6 @@ def llm_chain(query):
     chat_history.append((query, result["answer"]))
     
     return result
-
-st.set_page_config(page_title="NDIS Chatbot", 
-                   page_icon=":pixel-art-neutral:",
-                   layout="centered", 
-                   initial_sidebar_state="auto")
-col1, col2 = st.columns([1,1])
-
-col1.markdown(" # NDIS Chatbot ")
-col1.markdown(" ##### Ask me anything about NDIS ")
-col2.markdown(" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []

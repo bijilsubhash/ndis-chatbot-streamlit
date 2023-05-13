@@ -17,6 +17,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 
 import pinecone
+import openai
 
 
 st.set_page_config(page_title="NDIS Chatbot", 
@@ -57,8 +58,8 @@ def llm_chain(query):
     #expose this index in a retriever interface
     retriever = db.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
-    prompt_template = """You are a conversational NDIS expert with access to NDIS context. 
-    You are informative and provides details from the context. 
+    prompt_template = """You are a conversational  NDIS expert with access to NDIS context. 
+    You are informative and provides details from the context. If the query from the user lies outside the scope of NDIS context, please say you don't know the answer.
     If you don't know the answer, just say that you don't know, don't try to make up an answer.
 
     {context}
@@ -75,8 +76,7 @@ def llm_chain(query):
                                     chain_type_kwargs=chain_type_kwargs)
 
     result = qa({"query": query})
-    
-    return ast.literal_eval(result['answer'])
+    return result['result']
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []

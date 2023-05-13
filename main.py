@@ -86,7 +86,7 @@ if "past" not in st.session_state:
 
 placeholder = st.empty() 
 def get_text():
-    input_text = st.text_input("You: ", value="", key="input", placeholder="Type your question here...")
+    input_text = st.text_input("**What's on your mind**", "You: ", value="", key="input")
     return input_text
 
 

@@ -83,15 +83,12 @@ if "past" not in st.session_state:
     st.session_state["past"] = []
 
 placeholder = st.empty()
-response_container = st.container()
-container = st.container()
 
-with container:
-    def get_text():
-        with st.form(key='my_form', clear_on_submit=True):
-            input_text = st.text_area("You:", key='input', height=100)
-            submit_button = st.form_submit_button(label='Send')
-        return input_text
+def get_text():
+    with st.form(key='my_form', clear_on_submit=True):
+        input_text = st.text_area("You:", key='input', height=100)
+        submit_button = st.form_submit_button(label='Send')
+    return input_text
 
     user_input = get_text()
 

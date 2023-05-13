@@ -27,9 +27,7 @@ st.set_page_config(page_title="NDIS Chatbot",
 col1, col2 = st.columns([1,1])
 col1.markdown(" # NDIS Chatbot ")
 col1.markdown(" ##### Ask me anything about NDIS ")
-col2.markdown(f"""<p>This app is an LLM powered chatbot, built with</p> <p><img alt="File:OpenAI Logo.svg - Wikimedia Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/2560px-OpenAI_Logo.svg.png" style="font-size: 13px; width: 100px; height: 24px;"/>
-<span style="font-size: 13px;">&nbsp; &nbsp; &nbsp;&nbsp;</span><img alt="Screenshot-2023-05-14-at-9-27-13-am" src="https://i.ibb.co/TPGScwC/Screenshot-2023-05-14-at-9-27-13-am.png" style="width: 130px; height: 32px;" />
-<img alt="Pinecone 2.0 is Available and Free | Pinecone" src="https://global.discourse-cdn.com/standard14/uploads/pinecone/original/1X/d8e002f5074a908faee547fc24a48e77dec727c4.png" style="font-size: 13px; width: 120px; height: 33px;"/></p>""", unsafe_allow_html=True)
+col2.markdown("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla. Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.")
 
 #configurations
 csv.field_size_limit(sys.maxsize)

@@ -56,13 +56,26 @@ def llm_chain(query):
     #expose this index in a retriever interface
     retriever = db.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
-    #create a chain to answer questions using conversational retrieval chain i.e. with memory
-    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
-    qa = ConversationalRetrievalChain.from_llm(ChatOpenAI(model_name="gpt-3.5-turbo"), retriever)
+    prompt_template = """You are a conversational NDIS expert with access to NDIS context. 
+    You are informative and provides details from the context. 
+    If you don't know the answer, just say that you don't know, don't try to make up an answer.
 
-    chat_history = []
-    result = qa({"question": query, "chat_history": chat_history})
-    chat_history.append((query, result["answer"]))
+    {context}
+
+    Question: {question}
+    Answer:"""
+
+    PROMPT = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
+
+    #create a chain to answer questions
+    chain_type_kwargs = {"prompt": PROMPT}
+    qa = RetrievalQA.from_chain_type(ChatOpenAI(model_name="gpt-3.5-turbo"), 
+                                    chain_type="stuff", retriever=retriever, 
+                                    chain_type_kwargs=chain_type_kwargs)
+
+    #query #1
+    query = "what is NDIS?"
+    result = qa({"query": query})
     
     return result
 
@@ -84,8 +97,8 @@ if user_input:
     output = llm_chain(user_input)
     with st.spinner('Wait for it...'):
         st.session_state.past.append(user_input)
-        st.session_state.generated.append(output["answer"])
-        time.sleep(2)
+        st.session_state.generated.append(output)
+        time.sleep(0.03)
 
 
 if st.session_state["generated"]:

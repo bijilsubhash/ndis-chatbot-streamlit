@@ -15,12 +15,11 @@ from langchain.vectorstores import Pinecone
 from langchain.memory import ConversationBufferMemory
 from langchain.chat_models import ChatOpenAI
 
-import openai
 import pinecone
 
 #configurations
 csv.field_size_limit(sys.maxsize)
-openai.api_key = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 PINECONE_ENV = os.getenv("PINECONE_ENV")
 

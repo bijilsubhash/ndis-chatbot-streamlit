@@ -45,3 +45,5 @@ streamlit==1.1.0
 streamlit-chat
 altair==4.0
 langchain
+pinecone-client
+openai

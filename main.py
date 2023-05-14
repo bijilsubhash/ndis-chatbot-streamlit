@@ -57,7 +57,7 @@ def llm_chain(query):
     retriever = db.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
     prompt_template = """You are a conversational NDIS expert with access to NDIS context. 
-    You are informative and provides details from the context. If the query from the user lies outside the scope of NDIS context, please say you don't know the answer.
+    You are informative and provides details from the context. Answer in bullet points where it fits. If the query from the user lies outside the scope of NDIS context, please say you don't know the answer.
     If you don't know the answer, just say that you don't know, don't try to make up an answer.
 
     {context}

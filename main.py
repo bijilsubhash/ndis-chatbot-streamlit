@@ -27,7 +27,7 @@ st.set_page_config(page_title="NDIS Chatbot",
 col1, col2 = st.columns([1,1])
 col1.markdown(" # NDIS Chatbot ")
 col1.markdown(" ##### Ask me anything about NDIS ")
-col2.markdown("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla. Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.")
+col2.markdown("🎈Welcome to the our chatbot. Powered by OpenAI's GPT-3.5 Turbo, LangChain and Pinecone")
 
 #configurations
 csv.field_size_limit(sys.maxsize)
@@ -56,7 +56,7 @@ def llm_chain(query):
     #expose this index in a retriever interface
     retriever = db.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
-    prompt_template = """You are a conversational  NDIS expert with access to NDIS context. 
+    prompt_template = """You are a conversational NDIS expert with access to NDIS context. 
     You are informative and provides details from the context. If the query from the user lies outside the scope of NDIS context, please say you don't know the answer.
     If you don't know the answer, just say that you don't know, don't try to make up an answer.
 

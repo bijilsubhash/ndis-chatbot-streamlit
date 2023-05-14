@@ -27,7 +27,7 @@ st.set_page_config(page_title="NDIS Chatbot",
 col1, col2 = st.columns([1,1])
 col1.markdown(" # NDIS Chatbot ")
 col1.markdown(" ##### Ask me anything about NDIS ")
-col2.markdown("🎈Welcome to the our chatbot. Powered by OpenAI's GPT-3.5 Turbo, LangChain and Pinecone")
+col2.markdown("🎈Welcome to our chatbot. Powered by OpenAI's GPT-3.5 Turbo, LangChain and Pinecone")
 
 #configurations
 csv.field_size_limit(sys.maxsize)
